@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B74B5537282B390200203FD9 /* VistaCite_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5536282B390200203FD9 /* VistaCite_App.swift */; };
-		B74B5539282B390200203FD9 /* VistaCite_Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5538282B390200203FD9 /* VistaCite_Document.swift */; };
+		B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5538282B390200203FD9 /* VistaBibliography.swift */; };
 		B74B553B282B390200203FD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B553A282B390200203FD9 /* ContentView.swift */; };
 		B74B553D282B390400203FD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74B553C282B390400203FD9 /* Assets.xcassets */; };
 		B74B5540282B390400203FD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74B553F282B390400203FD9 /* Preview Assets.xcassets */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		B74B5533282B390200203FD9 /* VistaCite!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VistaCite!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74B5536282B390200203FD9 /* VistaCite_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaCite_App.swift; sourceTree = "<group>"; };
-		B74B5538282B390200203FD9 /* VistaCite_Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaCite_Document.swift; sourceTree = "<group>"; };
+		B74B5538282B390200203FD9 /* VistaBibliography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaBibliography.swift; sourceTree = "<group>"; };
 		B74B553A282B390200203FD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B74B553C282B390400203FD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B74B553F282B390400203FD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				B74B5536282B390200203FD9 /* VistaCite_App.swift */,
-				B74B5538282B390200203FD9 /* VistaCite_Document.swift */,
+				B74B5538282B390200203FD9 /* VistaBibliography.swift */,
 				B74B553A282B390200203FD9 /* ContentView.swift */,
 				B74B553C282B390400203FD9 /* Assets.xcassets */,
 				B74B5541282B390400203FD9 /* Info.plist */,
@@ -118,6 +118,8 @@
 				Base,
 			);
 			mainGroup = B74B552A282B390200203FD9;
+			packageReferences = (
+			);
 			productRefGroup = B74B5534282B390200203FD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,7 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74B5537282B390200203FD9 /* VistaCite_App.swift in Sources */,
-				B74B5539282B390200203FD9 /* VistaCite_Document.swift in Sources */,
+				B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */,
 				B74B553B282B390200203FD9 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

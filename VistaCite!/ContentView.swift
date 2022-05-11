@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var document: VistaCite_Document
+    @Binding var document: VistaBibliography
 
     var body: some View {
         TextEditor(text: $document.text)
@@ -17,6 +17,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(document: .constant(VistaCite_Document()))
+        ContentView(document: .constant(VistaBibliography()))
     }
 }
