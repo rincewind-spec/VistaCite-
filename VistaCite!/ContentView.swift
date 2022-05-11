@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  VistaCite!
 //
-//  Created by Brennan Jacobs on 5/10/22.
+//  Created by rincewind-spec on 5/10/22.
 //
 
 import SwiftUI
