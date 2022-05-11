@@ -13,8 +13,10 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>org.vistamarschool.student.VistaCite-.VistaBibliography</string>
+				<string>org.vistamarschool.student.VistaCite.VistaBibliography</string>
 			</array>
+			<key>NSDocumentClass</key>
+			<string>NSDocument</string>
 			<key>NSUbiquitousDocumentUserActivityType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).example-document</string>
 		</dict>
@@ -27,16 +29,20 @@
 				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>VistaBibliography</string>
+			<string>A VistaCite Biblography</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>org.vistamarschool.student.VistaCite-.VistaBibliography</string>
+			<string>org.vistamarschool.student.VistaCite.VistaBibliography</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
 					<string>VSTC</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/json</string>
 				</array>
 			</dict>
 		</dict>
@@ -49,11 +55,11 @@
 				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>VistaBibliography</string>
+			<string>A VistaCite Bibliography</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>org.vistamarschool.student.VistaCite-.VistaBibliography</string>
+			<string>org.vistamarschool.student.VistaCite.VistaBibliography</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

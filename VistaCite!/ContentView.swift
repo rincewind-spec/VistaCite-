@@ -11,12 +11,12 @@ struct ContentView: View {
     @Binding var document: VistaBibliography
 
     var body: some View {
-        TextEditor(text: $document.text)
+        Spacer()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(document: .constant(VistaBibliography()))
+        ContentView(document: .constant( VistaBibliography(bibliography: Bibliography(citationStyle: .mla9))))
     }
 }

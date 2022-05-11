@@ -9,32 +9,32 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var bibDoc: UTType {
-        UTType(importedAs: "org.vistamarschool.student.VistaCite-.VistaBibliography")
+    static var VistaBibliography: UTType {
+        UTType(importedAs: "org.vistamarschool.student.VistaCite.VistaBibliography")
     }
 }
 
 struct VistaBibliography: FileDocument, Codable {
     static let fileExtension = "VSTC"
-    var text: String
+    var bibliography: Bibliography
 
-    init(text: String = "Hello, world!") {
-        self.text = text
+    init(bibliography: Bibliography) {
+        self.bibliography = bibliography
     }
 
-    static var readableContentTypes: [UTType] { [.bibDoc] }
+    static var readableContentTypes: [UTType] { [.VistaBibliography] }
 
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents
         else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        let string = try JSONDecoder().decode(VistaBibliography.self, from: data)
-        self = string
+        let bibliography = try JSONDecoder().decode(Bibliography.self, from: data)
+        self.bibliography = bibliography
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = try JSONEncoder().encode(self)
+        let data = try JSONEncoder().encode(self.bibliography)
         return .init(regularFileWithContents: data)
     }
 }

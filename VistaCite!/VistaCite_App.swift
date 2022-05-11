@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct VistaCite_App: App {
     var body: some Scene {
-        DocumentGroup(newDocument: VistaBibliography()) { file in
-            ContentView(document: file.$document)
-        }
+        DocumentGroup(newDocument: VistaBibliography(bibliography: Bibliography(citationStyle: .mla9)), editor: {file in ContentView(document: file.$document)})
     }
 }

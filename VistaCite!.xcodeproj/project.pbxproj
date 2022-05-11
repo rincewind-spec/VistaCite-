@@ -12,6 +12,8 @@
 		B74B553B282B390200203FD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B553A282B390200203FD9 /* ContentView.swift */; };
 		B74B553D282B390400203FD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74B553C282B390400203FD9 /* Assets.xcassets */; };
 		B74B5540282B390400203FD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74B553F282B390400203FD9 /* Preview Assets.xcassets */; };
+		B74B554A282C2D6D00203FD9 /* Bibliography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5549282C2D6D00203FD9 /* Bibliography.swift */; };
+		B74B554C282C2E7200203FD9 /* Citation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554B282C2E7200203FD9 /* Citation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		B74B553F282B390400203FD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B74B5541282B390400203FD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74B5542282B390400203FD9 /* VistaCite_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VistaCite_.entitlements; sourceTree = "<group>"; };
+		B74B5549282C2D6D00203FD9 /* Bibliography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bibliography.swift; sourceTree = "<group>"; };
+		B74B554B282C2E7200203FD9 /* Citation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 		B74B552A282B390200203FD9 = {
 			isa = PBXGroup;
 			children = (
+				B74B554B282C2E7200203FD9 /* Citation.swift */,
+				B74B5549282C2D6D00203FD9 /* Bibliography.swift */,
 				B74B5535282B390200203FD9 /* VistaCite! */,
 				B74B5534282B390200203FD9 /* Products */,
 			);
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74B5537282B390200203FD9 /* VistaCite_App.swift in Sources */,
+				B74B554A282C2D6D00203FD9 /* Bibliography.swift in Sources */,
+				B74B554C282C2E7200203FD9 /* Citation.swift in Sources */,
 				B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */,
 				B74B553B282B390200203FD9 /* ContentView.swift in Sources */,
 			);
@@ -283,13 +291,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "VistaCite!/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.vistamarschool.student.VistaCite-";
+				PRODUCT_BUNDLE_IDENTIFIER = org.vistamarschool.student.VistaCite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -311,13 +320,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "VistaCite!/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.vistamarschool.student.VistaCite-";
+				PRODUCT_BUNDLE_IDENTIFIER = org.vistamarschool.student.VistaCite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
