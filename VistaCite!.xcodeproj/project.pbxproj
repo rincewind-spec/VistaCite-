@@ -14,6 +14,8 @@
 		B74B5540282B390400203FD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74B553F282B390400203FD9 /* Preview Assets.xcassets */; };
 		B74B554A282C2D6D00203FD9 /* Bibliography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5549282C2D6D00203FD9 /* Bibliography.swift */; };
 		B74B554C282C2E7200203FD9 /* Citation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554B282C2E7200203FD9 /* Citation.swift */; };
+		B74B554E282C432B00203FD9 /* BibliographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554D282C432B00203FD9 /* BibliographyView.swift */; };
+		B74B5550282C44AC00203FD9 /* CitationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554F282C44AC00203FD9 /* CitationRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		B74B5542282B390400203FD9 /* VistaCite_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VistaCite_.entitlements; sourceTree = "<group>"; };
 		B74B5549282C2D6D00203FD9 /* Bibliography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bibliography.swift; sourceTree = "<group>"; };
 		B74B554B282C2E7200203FD9 /* Citation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation.swift; sourceTree = "<group>"; };
+		B74B554D282C432B00203FD9 /* BibliographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliographyView.swift; sourceTree = "<group>"; };
+		B74B554F282C44AC00203FD9 /* CitationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,8 +47,6 @@
 		B74B552A282B390200203FD9 = {
 			isa = PBXGroup;
 			children = (
-				B74B554B282C2E7200203FD9 /* Citation.swift */,
-				B74B5549282C2D6D00203FD9 /* Bibliography.swift */,
 				B74B5535282B390200203FD9 /* VistaCite! */,
 				B74B5534282B390200203FD9 /* Products */,
 			);
@@ -61,9 +63,13 @@
 		B74B5535282B390200203FD9 /* VistaCite! */ = {
 			isa = PBXGroup;
 			children = (
+				B74B554B282C2E7200203FD9 /* Citation.swift */,
+				B74B5549282C2D6D00203FD9 /* Bibliography.swift */,
 				B74B5536282B390200203FD9 /* VistaCite_App.swift */,
 				B74B5538282B390200203FD9 /* VistaBibliography.swift */,
 				B74B553A282B390200203FD9 /* ContentView.swift */,
+				B74B554F282C44AC00203FD9 /* CitationRow.swift */,
+				B74B554D282C432B00203FD9 /* BibliographyView.swift */,
 				B74B553C282B390400203FD9 /* Assets.xcassets */,
 				B74B5541282B390400203FD9 /* Info.plist */,
 				B74B5542282B390400203FD9 /* VistaCite_.entitlements */,
@@ -154,6 +160,8 @@
 			files = (
 				B74B5537282B390200203FD9 /* VistaCite_App.swift in Sources */,
 				B74B554A282C2D6D00203FD9 /* Bibliography.swift in Sources */,
+				B74B5550282C44AC00203FD9 /* CitationRow.swift in Sources */,
+				B74B554E282C432B00203FD9 /* BibliographyView.swift in Sources */,
 				B74B554C282C2E7200203FD9 /* Citation.swift in Sources */,
 				B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */,
 				B74B553B282B390200203FD9 /* ContentView.swift in Sources */,

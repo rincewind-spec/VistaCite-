@@ -15,6 +15,12 @@ public class Citation: Codable, ObservableObject, Identifiable
     public var publishDate: Date
     public var url: URL
     public var publisher: String
+    public var title: String
+    public init(url: URL)
+    {
+        id = UUID()
+        accessDate = Date
+    }
     
 }
 public class Author: Codable, ObservableObject, Identifiable
