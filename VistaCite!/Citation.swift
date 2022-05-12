@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftSoup
 public class Citation: Codable, ObservableObject, Identifiable
 {
     public var authors: [Author]
@@ -19,7 +20,7 @@ public class Citation: Codable, ObservableObject, Identifiable
     public var title: String
     public init(url: URL)
     {
-        var whoisListing: String
+        var whoisListing = ""
         var hasWhois = true
         id = UUID()
         accessDate = Date()
@@ -30,8 +31,11 @@ public class Citation: Codable, ObservableObject, Identifiable
         }
         if hasWhois == false
         {
-            self.publisher = url.absoluteString
-            self.journal = url.absoluteString
+            publisher = url.absoluteString
+        }
+        else
+        {
+            publisher = whoisParser(whoisListing: whoisListing)
         }
         
     }
@@ -58,16 +62,21 @@ public class Author: Codable, ObservableObject, Identifiable
         }
     }
 }
-func whoisParser(whoisListing: String)
+func whoisParser(whoisListing: String) -> String
 {
     let whoisLines = whoisListing.components(separatedBy: "\n")
-    var publisher: String
-    var journal: String
+    var publisher = ""
     for line in whoisLines
     {
         if line.contains("Registrant Organization: ")
         {
-            publisher = String(line[line.firstIndex(of: ":")!...])
+            publisher = String(String(line[line.firstIndex(of: ":")!...]).dropFirst(2))
+            break
         }
     }
+    return publisher
+}
+func journalParser(url: URL) -> String
+{
+    
 }
