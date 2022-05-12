@@ -15,11 +15,25 @@ public class Citation: Codable, ObservableObject, Identifiable
     public var publishDate: Date
     public var url: URL
     public var publisher: String
+    public var journal: String
     public var title: String
     public init(url: URL)
     {
+        var whoisListing: String
+        var hasWhois = true
         id = UUID()
-        accessDate = Date
+        accessDate = Date()
+        do {whoisListing = try Process.run(URL(fileURLWithPath: "/usr/bin/whois"), arguments: [String(contentsOf: url)]).standardOutput as! String}
+        catch
+        {
+            hasWhois = false
+        }
+        if hasWhois == false
+        {
+            self.publisher = url.absoluteString
+            self.journal = url.absoluteString
+        }
+        
     }
     
 }
@@ -41,6 +55,19 @@ public class Author: Codable, ObservableObject, Identifiable
         {
             firstName = "Check"
             lastName = "Author"
+        }
+    }
+}
+func whoisParser(whoisListing: String)
+{
+    let whoisLines = whoisListing.components(separatedBy: "\n")
+    var publisher: String
+    var journal: String
+    for line in whoisLines
+    {
+        if line.contains("Registrant Organization: ")
+        {
+            publisher = String(line[line.firstIndex(of: ":")!...])
         }
     }
 }
