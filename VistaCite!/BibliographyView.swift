@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BibliographyView: View {
     @Binding var bibliography: Bibliography
-    @State var citationURL: String
+    @State var citationURL = ""
     var body: some View {
         VStack {
             HStack
@@ -22,14 +22,19 @@ struct BibliographyView: View {
                     
                     })
             }
-            if !bibliography.citations.isEmpty
+            if bibliography.citations.isEmpty == false
             {
             NavigationView
             {
-                List(content: bibliography.citations)
-                {
-                    citation in nav
-                }
+                ForEach($bibliography.citations)
+                    {
+                        citation in
+                        NavigationLink(destination: CitationView(citation: citation), label:
+                        {
+                            CitationRow(citation: citation)
+                        }
+                        )
+                    }
             }
                 
             }

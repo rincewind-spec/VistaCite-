@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CitationRow: View {
-    var citation: Citation
+    @Binding var citation: Citation
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(citation.url.absoluteString)
     }
 }
 
 struct CitationRow_Previews: PreviewProvider {
     static var previews: some View {
-        CitationRow(citation)
+        CitationRow(citation: .constant(Citation(url: URL(string: "example.com")!)))
     }
 }

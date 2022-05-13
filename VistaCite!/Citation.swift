@@ -8,8 +8,16 @@
 import Foundation
 import SwiftUI
 import SwiftSoup
-public class Citation: Codable, ObservableObject, Identifiable
+public class Citation: Codable, ObservableObject, Identifiable, Hashable
 {
+    public static func == (lhs: Citation, rhs: Citation) -> Bool
+    {
+        return lhs.url == rhs.url
+    }
+    public func hash(into hasher: inout Hasher)
+    {
+        hasher.combine(url)
+    }
     public var authors: [Author]
     public var id: UUID
     public var accessDate: Date
