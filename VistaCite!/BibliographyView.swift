@@ -9,13 +9,30 @@ import SwiftUI
 
 struct BibliographyView: View {
     @Binding var bibliography: Bibliography
+    @State var citationURL: String
     var body: some View {
-        ScrollView
-        {
-            /*List(bibliography.citations)
+        VStack {
+            HStack
             {
+                TextField("Add citation", text: $citationURL)
+                Button("Add Citation", action:
+                    {
+                        bibliography.citations.append(Citation(url: URL(string: citationURL)!))
+                        citationURL = ""
+                    
+                    })
+            }
+            if !bibliography.citations.isEmpty
+            {
+            NavigationView
+            {
+                List(content: bibliography.citations)
+                {
+                    citation in nav
+                }
+            }
                 
-            }*/
+            }
         }
     }
 }

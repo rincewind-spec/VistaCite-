@@ -17,6 +17,7 @@
 		B74B554E282C432B00203FD9 /* BibliographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554D282C432B00203FD9 /* BibliographyView.swift */; };
 		B74B5550282C44AC00203FD9 /* CitationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554F282C44AC00203FD9 /* CitationRow.swift */; };
 		B74B5554282D8EFF00203FD9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B74B5553282D8EFF00203FD9 /* SwiftSoup */; };
+		B74B5556282DD88200203FD9 /* CitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5555282DD88200203FD9 /* CitationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B74B554B282C2E7200203FD9 /* Citation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation.swift; sourceTree = "<group>"; };
 		B74B554D282C432B00203FD9 /* BibliographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliographyView.swift; sourceTree = "<group>"; };
 		B74B554F282C44AC00203FD9 /* CitationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationRow.swift; sourceTree = "<group>"; };
+		B74B5555282DD88200203FD9 /* CitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				B74B553A282B390200203FD9 /* ContentView.swift */,
 				B74B554F282C44AC00203FD9 /* CitationRow.swift */,
 				B74B554D282C432B00203FD9 /* BibliographyView.swift */,
+				B74B5555282DD88200203FD9 /* CitationView.swift */,
 				B74B553C282B390400203FD9 /* Assets.xcassets */,
 				B74B5541282B390400203FD9 /* Info.plist */,
 				B74B5542282B390400203FD9 /* VistaCite_.entitlements */,
@@ -167,6 +170,7 @@
 				B74B5537282B390200203FD9 /* VistaCite_App.swift in Sources */,
 				B74B554A282C2D6D00203FD9 /* Bibliography.swift in Sources */,
 				B74B5550282C44AC00203FD9 /* CitationRow.swift in Sources */,
+				B74B5556282DD88200203FD9 /* CitationView.swift in Sources */,
 				B74B554E282C432B00203FD9 /* BibliographyView.swift in Sources */,
 				B74B554C282C2E7200203FD9 /* Citation.swift in Sources */,
 				B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */,

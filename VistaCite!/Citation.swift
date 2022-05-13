@@ -20,10 +20,13 @@ public class Citation: Codable, ObservableObject, Identifiable
     public var title: String
     public init(url: URL)
     {
+        self.url = url
         var whoisListing = ""
         var hasWhois = true
+        var journalParserOutput: (String, String)
         id = UUID()
         accessDate = Date()
+        publishDate = Date()
         do {whoisListing = try Process.run(URL(fileURLWithPath: "/usr/bin/whois"), arguments: [String(contentsOf: url)]).standardOutput as! String}
         catch
         {
@@ -31,12 +34,18 @@ public class Citation: Codable, ObservableObject, Identifiable
         }
         if hasWhois == false
         {
-            publisher = url.absoluteString
+            publisher = self.url.absoluteString
+            journal = ""
+            title = ""
         }
         else
         {
             publisher = whoisParser(whoisListing: whoisListing)
+            journalParserOutput = journalParser(url: self.url)
+            journal = journalParserOutput.0
+            title = journalParserOutput.1
         }
+        authors = [Author(authorName: "")]
         
     }
     
@@ -62,7 +71,7 @@ public class Author: Codable, ObservableObject, Identifiable
         }
     }
 }
-func whoisParser(whoisListing: String) -> String
+fileprivate func whoisParser(whoisListing: String) -> String
 {
     let whoisLines = whoisListing.components(separatedBy: "\n")
     var publisher = ""
@@ -76,7 +85,66 @@ func whoisParser(whoisListing: String) -> String
     }
     return publisher
 }
-func journalParser(url: URL) -> String
+fileprivate func journalParser(url: URL) -> (String, String)
 {
-    
+    var journal: String
+    var title: String
+    var hasWebPage = true
+    var isWebPageParsed = true
+    var webPage = ""
+    var document: Document = Document("")
+    var titleElement: Element
+    var metaElement: Element
+    do
+    {
+        webPage = try String(contentsOf: url)
+    }
+    catch
+    {
+        hasWebPage = false
+    }
+    if hasWebPage == false
+    {
+        journal = url.absoluteString
+        title = ""
+    }
+    else
+    {
+        do
+        {
+            document = try SwiftSoup.parse(webPage)
+        }
+        catch
+        {
+            isWebPageParsed = false
+        }
+        if isWebPageParsed == false
+        {
+            journal = url.absoluteString
+            title = ""
+        }
+        else
+        {
+            do
+            {
+                titleElement = try document.select("title").first()!
+                title = try titleElement.text()
+            }
+            catch
+            {
+                title = ""
+            }
+            do
+            {
+                metaElement = try document.select("og|site_name").first()!
+                journal = try metaElement.attr("content")
+            }
+            catch
+            {
+                journal = url.absoluteString
+            }
+        }
+        
+    }
+    return (journal, title)
 }
