@@ -22,7 +22,7 @@ struct BibliographyView: View {
                     
                     })
             }
-            if bibliography.citations.isEmpty == false
+            if $bibliography.citations.isEmpty == false
             {
             NavigationView
             {

@@ -35,7 +35,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         id = UUID()
         accessDate = Date()
         publishDate = Date()
-        do {whoisListing = try Process.run(URL(fileURLWithPath: "/usr/bin/whois"), arguments: [String(contentsOf: url)]).standardOutput as! String}
+        do {whoisListing = try Process.run(URL(fileURLWithPath: "/usr/bin/whois"), arguments: [absoluteURLParser(url: self.url.absoluteString)]).standardOutput as! String}
         catch
         {
             hasWhois = false
@@ -78,6 +78,22 @@ public class Author: Codable, ObservableObject, Identifiable
             lastName = "Author"
         }
     }
+}
+fileprivate func absoluteURLParser(url: String) -> String
+{
+    let urlNoProtocol = String(String(url[url.firstIndex(of: ":")!...]).dropFirst(3))
+    let urlNoFolders = String(String(urlNoProtocol[...url.firstIndex(of: "/")!]).dropLast(1))
+    var urlComponents = urlNoFolders.components(separatedBy: ".")
+    print(
+        {
+            for component in urlComponents
+            {
+                component + " "
+            }
+        })
+    var rtnString = urlComponents.popLast()!
+    rtnString = urlComponents.popLast()! + "." + rtnString
+    return rtnString
 }
 fileprivate func whoisParser(whoisListing: String) -> String
 {
