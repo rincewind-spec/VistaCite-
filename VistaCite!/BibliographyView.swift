@@ -14,7 +14,8 @@ struct BibliographyView: View {
         VStack {
             HStack
             {
-                TextField("Add citation", text: $citationURL)
+                TextField("Add Citation", text: $citationURL)
+                    .frame(width: 200.0)
                 Button("Add Citation", action:
                     {
                         bibliography.citations.append(Citation(url: URL(string: citationURL)!))
@@ -22,6 +23,7 @@ struct BibliographyView: View {
                     
                     })
             }
+            
             if $bibliography.citations.isEmpty == false
             {
             NavigationView
@@ -39,6 +41,7 @@ struct BibliographyView: View {
                 
             }
         }
+        .padding(.all)
     }
 }
 

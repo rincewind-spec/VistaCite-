@@ -29,13 +29,19 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
     public init(url: URL)
     {
         self.url = url
+        let whois = Process()
+        whois.executableURL = URL(fileURLWithPath: "/usr/bin/whois")
+        let hostGetter = URLComponents(url: self.url, resolvingAgainstBaseURL: true)
+        whois.arguments = [(hostGetter?.host)!]
+        let whoisPipe = Pipe()
+        whois.standardOutput = whoisPipe
         var whoisListing = ""
         var hasWhois = true
         var journalParserOutput: (String, String)
         id = UUID()
         accessDate = Date()
         publishDate = Date()
-        do {whoisListing = try Process.run(URL(fileURLWithPath: "/usr/bin/whois"), arguments: [absoluteURLParser(url: self.url.absoluteString)]).standardOutput as! String}
+        do {try whois.run()}
         catch
         {
             hasWhois = false
@@ -48,6 +54,8 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         }
         else
         {
+            let whoisData = whoisPipe.fileHandleForReading.readDataToEndOfFile()
+            whoisListing = String(decoding: whoisData, as: UTF8.self)
             publisher = whoisParser(whoisListing: whoisListing)
             journalParserOutput = journalParser(url: self.url)
             journal = journalParserOutput.0
@@ -78,22 +86,6 @@ public class Author: Codable, ObservableObject, Identifiable
             lastName = "Author"
         }
     }
-}
-fileprivate func absoluteURLParser(url: String) -> String
-{
-    let urlNoProtocol = String(String(url[url.firstIndex(of: ":")!...]).dropFirst(3))
-    let urlNoFolders = String(String(urlNoProtocol[...url.firstIndex(of: "/")!]).dropLast(1))
-    var urlComponents = urlNoFolders.components(separatedBy: ".")
-    print(
-        {
-            for component in urlComponents
-            {
-                component + " "
-            }
-        })
-    var rtnString = urlComponents.popLast()!
-    rtnString = urlComponents.popLast()! + "." + rtnString
-    return rtnString
 }
 fileprivate func whoisParser(whoisListing: String) -> String
 {
@@ -160,7 +152,7 @@ fileprivate func journalParser(url: URL) -> (String, String)
             }
             do
             {
-                metaElement = try document.select("og|site_name").first()!
+                metaElement = try document.select("meta").first()!
                 journal = try metaElement.attr("content")
             }
             catch

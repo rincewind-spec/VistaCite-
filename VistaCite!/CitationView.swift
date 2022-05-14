@@ -24,6 +24,7 @@ struct CitationView: View {
                     TextField("Author Last Name", text: author.lastName)
                 }
             }
+            Button(action: {citation.authors.append(Author(authorName: ""))}, label: {Text("Add Author")})
             Text("Dates: ").font(.title2)
             DatePicker("Date accessed:", selection: $citation.accessDate, displayedComponents: [.date])
             DatePicker("Date published:", selection: $citation.publishDate, displayedComponents: [.date])
