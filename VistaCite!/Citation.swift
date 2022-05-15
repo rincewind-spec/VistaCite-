@@ -73,10 +73,9 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         whois.standardOutput = whoisPipe
         var whoisListing = ""
         var hasWhois = true
-        var journalParserOutput: (String, String)
+        var journalParserOutput: (String, String, Date)
         id = UUID()
         accessDate = Date()
-        publishDate = Date()
         do {try whois.run()}
         catch
         {
@@ -87,6 +86,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
             publisher = url.absoluteString
             journal = ""
             title = ""
+            publishDate = Date()
         }
         else
         {
@@ -96,6 +96,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
             journalParserOutput = journalParser(url: url)
             journal = journalParserOutput.0
             title = journalParserOutput.1
+            publishDate = journalParserOutput.2
         }
         authors = [Author(authorName: "")]
         
@@ -141,16 +142,20 @@ fileprivate func whoisParser(whoisListing: String) -> String
     }
     return publisher
 }
-fileprivate func journalParser(url: URL) -> (String, String)
+fileprivate func journalParser(url: URL) -> (String, String, Date)
 {
     var journal: String
     var title: String
+    var date: Date
+    var timeString: String
     var hasWebPage = true
     var isWebPageParsed = true
+    var isDate = true
     var webPage = ""
     var document: Document = Document("")
     var titleElement: Element
     var metaElement: Element
+    var dateElement: Element?
     do
     {
         webPage = try String(contentsOf: url)
@@ -163,6 +168,7 @@ fileprivate func journalParser(url: URL) -> (String, String)
     {
         journal = url.absoluteString
         title = ""
+        date = Date()
     }
     else
     {
@@ -178,6 +184,7 @@ fileprivate func journalParser(url: URL) -> (String, String)
         {
             journal = url.absoluteString
             title = ""
+            date = Date()
         }
         else
         {
@@ -192,15 +199,44 @@ fileprivate func journalParser(url: URL) -> (String, String)
             }
             do
             {
-                metaElement = try document.select("meta").first()!
+                metaElement = try document.select("meta[property='og:site_name']").first()!
                 journal = try metaElement.attr("content")
             }
             catch
             {
                 journal = url.absoluteString
             }
+            do
+            {
+                dateElement = try document.select("time[datetime]").first()
+                if dateElement == nil
+                {
+                    dateElement = try document.select("meta[property='article:published_time']").first()
+                    timeString = "content"
+                    if dateElement == nil
+                    {
+                        isDate = false
+                    }
+                }
+                else
+                {
+                    timeString = "datetime"
+                }
+                if isDate == true
+                {
+                    date = try ISO8601DateFormatter().date(from: dateElement!.attr(timeString)) ?? Date()
+                }
+                else
+                {
+                    date = Date()
+                }
+            }
+            catch
+            {
+                date = Date()
+            }
         }
         
     }
-    return (journal, title)
+    return (journal, title, date)
 }

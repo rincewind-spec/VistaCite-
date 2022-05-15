@@ -14,7 +14,7 @@ extension UTType {
     }
 }
 
-struct VistaBibliography: FileDocument, Codable {
+class VistaBibliography: FileDocument, Codable, ObservableObject {
     static let fileExtension = "VSTC"
     var bibliography: Bibliography
 
@@ -24,7 +24,7 @@ struct VistaBibliography: FileDocument, Codable {
 
     static var readableContentTypes: [UTType] { [.VistaBibliography] }
 
-    init(configuration: ReadConfiguration) throws {
+    required init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents
         else {
             throw CocoaError(.fileReadCorruptFile)

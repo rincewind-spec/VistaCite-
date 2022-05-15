@@ -11,7 +11,7 @@ struct ContentView: View {
     @Binding var document: VistaBibliography
 
     var body: some View {
-        BibliographyView(bibliography: $document.bibliography)
+        BibliographyView(bibliography: document.bibliography)
     }
 }
 
