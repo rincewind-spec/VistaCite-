@@ -8,8 +8,35 @@
 import Foundation
 import SwiftUI
 import SwiftSoup
+import DomainParser
 public class Citation: Codable, ObservableObject, Identifiable, Hashable
 {
+    public required init(from decoder: Decoder) throws
+    {
+        let filer = try decoder.container(keyedBy: CodingKeys.self)
+        authors = try filer.decode([Author].self, forKey: .authors)
+        id = try filer.decode(UUID.self, forKey: .id)
+        accessDate = try filer.decode(Date.self, forKey: .accessDate)
+        publishDate = try filer.decode(Date.self, forKey: .publishDate)
+        url = try filer.decode(URL.self, forKey: .url)
+        publisher = try filer.decode(String.self, forKey: .publisher)
+        journal = try filer.decode(String.self, forKey: .journal)
+        title = try filer.decode(String.self, forKey: .title)
+    }
+    
+    public func encode(to encoder: Encoder) throws
+    {
+        var filer = encoder.container(keyedBy: CodingKeys.self)
+        try filer.encode(authors, forKey: .authors)
+        try filer.encode(id, forKey: .id)
+        try filer.encode(accessDate, forKey: .accessDate)
+        try filer.encode(publishDate, forKey: .publishDate)
+        try filer.encode(url, forKey: .url)
+        try filer.encode(publisher, forKey: .publisher)
+        try filer.encode(journal, forKey: .journal)
+        try filer.encode(title, forKey: .title)
+    }
+    
     public static func == (lhs: Citation, rhs: Citation) -> Bool
     {
         return lhs.url == rhs.url
@@ -18,21 +45,30 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
     {
         hasher.combine(url)
     }
-    public var authors: [Author]
-    public var id: UUID
-    public var accessDate: Date
-    public var publishDate: Date
-    public var url: URL
-    public var publisher: String
-    public var journal: String
-    public var title: String
+    @Published public var authors: [Author]
+    @Published public var id: UUID
+    @Published public var accessDate: Date
+    @Published public var publishDate: Date
+    @Published public var url: URL
+    @Published public var publisher: String
+    @Published public var journal: String
+    @Published public var title: String
     public init(url: URL)
     {
         self.url = url
         let whois = Process()
+        let hostGetter = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        let domainParser: DomainParser
+        do
+        {   try
+            domainParser = DomainParser()
+            whois.arguments = [(domainParser.parse(host: (hostGetter?.host)!)?.domain)!]
+        }
+        catch
+        {
+            whois.arguments = [(hostGetter?.host)!]
+        }
         whois.executableURL = URL(fileURLWithPath: "/usr/bin/whois")
-        let hostGetter = URLComponents(url: self.url, resolvingAgainstBaseURL: true)
-        whois.arguments = [(hostGetter?.host)!]
         let whoisPipe = Pipe()
         whois.standardOutput = whoisPipe
         var whoisListing = ""
@@ -48,7 +84,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         }
         if hasWhois == false
         {
-            publisher = self.url.absoluteString
+            publisher = url.absoluteString
             journal = ""
             title = ""
         }
@@ -57,12 +93,16 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
             let whoisData = whoisPipe.fileHandleForReading.readDataToEndOfFile()
             whoisListing = String(decoding: whoisData, as: UTF8.self)
             publisher = whoisParser(whoisListing: whoisListing)
-            journalParserOutput = journalParser(url: self.url)
+            journalParserOutput = journalParser(url: url)
             journal = journalParserOutput.0
             title = journalParserOutput.1
         }
         authors = [Author(authorName: "")]
         
+    }
+    enum CodingKeys: CodingKey
+    {
+        case authors, id, accessDate, publishDate, url, publisher, journal, title
     }
     
 }

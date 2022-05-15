@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CitationRow: View {
-    @Binding var citation: Citation
+    @ObservedObject var citation: Citation
     var body: some View {
         Text(citation.url.absoluteString)
     }
@@ -16,6 +16,6 @@ struct CitationRow: View {
 
 struct CitationRow_Previews: PreviewProvider {
     static var previews: some View {
-        CitationRow(citation: .constant(Citation(url: URL(string: "example.com")!)))
+        CitationRow(citation: Citation(url: URL(string: "example.com")!))
     }
 }

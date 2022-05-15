@@ -18,6 +18,7 @@
 		B74B5550282C44AC00203FD9 /* CitationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B554F282C44AC00203FD9 /* CitationRow.swift */; };
 		B74B5554282D8EFF00203FD9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B74B5553282D8EFF00203FD9 /* SwiftSoup */; };
 		B74B5556282DD88200203FD9 /* CitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B5555282DD88200203FD9 /* CitationView.swift */; };
+		B74B555928307CB900203FD9 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = B74B555828307CB900203FD9 /* DomainParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74B5554282D8EFF00203FD9 /* SwiftSoup in Frameworks */,
+				B74B555928307CB900203FD9 /* DomainParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +111,7 @@
 			name = "VistaCite!";
 			packageProductDependencies = (
 				B74B5553282D8EFF00203FD9 /* SwiftSoup */,
+				B74B555828307CB900203FD9 /* DomainParser */,
 			);
 			productName = "VistaCite!";
 			productReference = B74B5533282B390200203FD9 /* VistaCite!.app */;
@@ -140,6 +143,7 @@
 			mainGroup = B74B552A282B390200203FD9;
 			packageReferences = (
 				B74B5552282D8EFF00203FD9 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				B74B555728307CB900203FD9 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */,
 			);
 			productRefGroup = B74B5534282B390200203FD9 /* Products */;
 			projectDirPath = "";
@@ -384,6 +388,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		B74B555728307CB900203FD9 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Dashlane/SwiftDomainParser";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -391,6 +403,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B74B5552282D8EFF00203FD9 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		B74B555828307CB900203FD9 /* DomainParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B74B555728307CB900203FD9 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */;
+			productName = DomainParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
