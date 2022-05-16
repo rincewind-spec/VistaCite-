@@ -39,7 +39,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
     
     public static func == (lhs: Citation, rhs: Citation) -> Bool
     {
-        return lhs.url == rhs.url
+        return lhs.id == rhs.id
     }
     public func hash(into hasher: inout Hasher)
     {
@@ -107,10 +107,29 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
     }
     
 }
-public class Author: Codable, ObservableObject, Identifiable
+public class Author: Codable, ObservableObject, Identifiable, Equatable
 {
-    public var firstName: String
-    public var lastName: String
+    public required init(from decoder: Decoder) throws
+    {
+        let filer = try decoder.container(keyedBy: CodingKeys.self)
+        firstName = try filer.decode(String.self, forKey: .firstName)
+        lastName = try filer.decode(String.self, forKey: .lastName)
+        id = try filer.decode(UUID.self, forKey: .id)
+    }
+    public func encode(to encoder: Encoder) throws
+    {
+        var filer = encoder.container(keyedBy: CodingKeys.self)
+        try filer.encode(firstName, forKey: .firstName)
+        try filer.encode(lastName, forKey: .lastName)
+        try filer.encode(id, forKey: .id)
+    }
+    public static func == (lhs: Author, rhs: Author) -> Bool
+    {
+        return lhs.id == rhs.id
+    }
+    
+    @Published public var firstName: String
+    @Published public var lastName: String
     public var id: UUID
     public init(authorName: String)
     {
@@ -126,6 +145,10 @@ public class Author: Codable, ObservableObject, Identifiable
             firstName = "Check"
             lastName = "Author"
         }
+    }
+    enum CodingKeys: CodingKey
+    {
+        case firstName, lastName, id
     }
 }
 fileprivate func whoisParser(whoisListing: String) -> String

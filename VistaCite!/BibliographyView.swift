@@ -12,15 +12,17 @@ struct BibliographyView: View {
     var body: some View {
         NavigationView
             {
-                List($bibliography.citations)
+                List(bibliography.citations)
                     {
-                        $citation in
+                        citation in
                         NavigationLink(destination: CitationView(citation: citation), label:
                         {
-                            CitationRow(citation: citation)
+                            CitationRow(citation: citation, citationNumber: bibliography.citations.firstIndex(of: citation)!)
                         }
                         )
                     }
+                Text("No Selection")
+                    .font(.headline)
             }
             .toolbar(content:
                         {
@@ -33,7 +35,6 @@ struct BibliographyView: View {
                             bibliography.citationURL = ""
                         }
                 }
-                .frame(height: 30.0)
             })
             .navigationTitle("VistaCite")
     }

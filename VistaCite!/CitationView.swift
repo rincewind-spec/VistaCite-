@@ -13,13 +13,22 @@ struct CitationView: View {
         Form
         {
             Text("Authors: ").font(.title2)
-            ForEach($citation.authors)
+            List(citation.authors)
             {
                 author in
-                    TextField("Author First Name", text: author.firstName)
-                    TextField("Author Last Name", text: author.lastName)
+                AuthorView(author: author, authorNumber: citation.authors.firstIndex(of: author)!)
+                    .listStyle(.bordered(alternatesRowBackgrounds: false))
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true, content:
+                        {
+                        Button(role: .destructive, action:
+                                {
+                                    citation.authors.remove(at: citation.authors.firstIndex(of: author)!)
+                                }, label:
+                                {
+                                        Image(systemName: "trash.fill")
+                                })
+                        })
             }
-            .frame(width: 300.0)
             Button(action: {citation.authors.append(Author(authorName: ""))}, label: {Text("Add Author")})
             Text("Dates: ").font(.title2)
             DatePicker("Date accessed:", selection: $citation.accessDate, displayedComponents: [.date])
@@ -32,6 +41,7 @@ struct CitationView: View {
                 TextField("Journal Publisher", text: $citation.publisher)
             
         }
+        .padding(.all)
         .frame(width: 500.0)
     }
 }
