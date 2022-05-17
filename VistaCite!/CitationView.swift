@@ -17,17 +17,14 @@ struct CitationView: View {
             {
                 author in
                 AuthorView(author: author, authorNumber: citation.authors.firstIndex(of: author)!)
-                    .listStyle(.bordered(alternatesRowBackgrounds: false))
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true, content:
-                        {
                         Button(role: .destructive, action:
                                 {
                                     citation.authors.remove(at: citation.authors.firstIndex(of: author)!)
                                 }, label:
                                 {
-                                        Image(systemName: "trash.fill")
-                                })
+                                        Text("Delete Author \(citation.authors.firstIndex(of: author)! + 1)")
                         })
+                        .tint(.red)
             }
             Button(action: {citation.authors.append(Author(authorName: ""))}, label: {Text("Add Author")})
             Text("Dates: ").font(.title2)

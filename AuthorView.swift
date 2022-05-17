@@ -12,11 +12,12 @@ struct AuthorView: View {
     var authorNumber: Int
     var body: some View
     {
-        VStack
-        {
-            TextField("Author \(authorNumber + 1) First Name", text: $author.firstName)
-            TextField("Author \(authorNumber + 1) Last Name", text: $author.lastName)
-        }
+            VStack
+            {
+                TextField("Author \(authorNumber + 1) First Name", text: $author.firstName)
+                TextField("Author \(authorNumber + 1) Last Name", text: $author.lastName)
+            }
+
     }
 }
 

@@ -21,13 +21,16 @@ struct BibliographyView: View {
                         }
                         )
                     }
-                Text("No Selection")
-                    .font(.headline)
             }
             .toolbar(content:
                         {
                 HStack(alignment: .top)
                 {
+                    Picker("Citation Style", selection: $bibliography.citationStyle, content:
+                            {
+                                Text("MLA 9").tag(CitationStyle.mla9)
+                                Text("APA 9").tag(CitationStyle.apa9)
+                            })
                     TextField("Add Citation", text: $bibliography.citationURL)
                         .frame(width: 200.0)
                         .onSubmit {

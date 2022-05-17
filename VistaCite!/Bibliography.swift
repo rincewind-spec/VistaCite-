@@ -21,7 +21,7 @@ public class Bibliography: Codable, ObservableObject
         try filer.encode(citationURL, forKey: .citationURL)
         try filer.encode(citations, forKey: .citations)
     }
-    var citationStyle: CitationStyle
+    @Published var citationStyle: CitationStyle
     @Published var citations: [Citation]
     @Published var citationURL: String
     public init(citationStyle: CitationStyle)
@@ -33,6 +33,17 @@ public class Bibliography: Codable, ObservableObject
     enum CodingKeys: CodingKey
     {
         case citationStyle, citations, citationURL
+    }
+    public func CitationFormatter(citation: Citation) -> String
+    {
+        var rtnString: String = ""
+        if citationStyle == .mla9
+        {
+            for author in citation.authors
+            {
+                rtnString = rtnString +
+            }
+        }
     }
 }
 public enum CitationStyle: Codable
