@@ -6,8 +6,9 @@
 //
 
 import Foundation
-public class Bibliography: Codable, ObservableObject
+public class Bibliography: Codable, ObservableObject, CustomStringConvertible
 {
+    
     public required init(from decoder: Decoder) throws
     {
         let filer = try decoder.container(keyedBy: CodingKeys.self)
@@ -33,17 +34,6 @@ public class Bibliography: Codable, ObservableObject
     enum CodingKeys: CodingKey
     {
         case citationStyle, citations, citationURL
-    }
-    public func CitationFormatter(citation: Citation) -> String
-    {
-        var rtnString: String = ""
-        if citationStyle == .mla9
-        {
-            for author in citation.authors
-            {
-                rtnString = rtnString +
-            }
-        }
     }
 }
 public enum CitationStyle: Codable
