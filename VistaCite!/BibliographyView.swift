@@ -12,12 +12,13 @@ struct BibliographyView: View {
     var body: some View {
         NavigationView
             {
-                List(bibliography.citations)
+                List(bibliography.citations, id: \.id)
                     {
                         citation in
                         NavigationLink(destination: CitationView(citation: citation), label:
                         {
-                            CitationRow(citation: citation, citationNumber: bibliography.citations.firstIndex(of: citation)!)
+                            CitationRow(citation: citation, citationStyle: $bibliography.citationStyle, citationNumber: bibliography.citations.firstIndex(of: citation)!)
+                            //Text("\(bibliography.citations.firstIndex(of: citation)! + 1). \(citation.CitationFormatter(citationStyle: bibliography.citationStyle))")
                         }
                         )
                     }

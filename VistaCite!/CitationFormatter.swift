@@ -24,7 +24,7 @@ public extension String.StringInterpolation
         }
         else if citationStyle == .apa7
         {
-            dateFormatter.dateFormat = "(yyyy, MM dd)"
+            dateFormatter.dateFormat = "(yyyy, MMMM dd)"
             if citation.authors.count > 1
             {
                 rtnString = citation.publisher
@@ -35,6 +35,6 @@ public extension String.StringInterpolation
             }
             rtnString += ". " + dateFormatter.string(from: citation.publishDate) + ". " + "*\(citation.title)*" + ". " + citation.journal + ". " + "[\(citation.url.absoluteString)](\(citation.url))"
         }
-        appendInterpolation(rtnString)
+        appendLiteral(rtnString)
     }
 }
