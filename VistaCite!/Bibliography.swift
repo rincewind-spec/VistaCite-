@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public class Bibliography: Codable, ObservableObject, CustomStringConvertible
+public class Bibliography: Codable, ObservableObject
 {
     
     public required init(from decoder: Decoder) throws
@@ -39,5 +39,5 @@ public class Bibliography: Codable, ObservableObject, CustomStringConvertible
 public enum CitationStyle: Codable
 {
     case mla9
-    case apa9
+    case apa7
 }

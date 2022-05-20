@@ -29,7 +29,7 @@ struct BibliographyView: View {
                     Picker("Citation Style", selection: $bibliography.citationStyle, content:
                             {
                                 Text("MLA 9").tag(CitationStyle.mla9)
-                                Text("APA 9").tag(CitationStyle.apa9)
+                                Text("APA 7").tag(CitationStyle.apa7)
                             })
                     TextField("Add Citation", text: $bibliography.citationURL)
                         .frame(width: 200.0)
