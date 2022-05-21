@@ -33,14 +33,13 @@ struct BibliographyView: View {
                                 Text("APA 7").tag(CitationStyle.apa7)
                             })
                     TextField("Add Citation", text: $bibliography.citationURL)
-                        .frame(width: 200.0)
+                        .frame(width: 300.0)
                         .onSubmit {
                             bibliography.citations.append(Citation(url: URL(string: bibliography.citationURL)!))
                             bibliography.citationURL = ""
                         }
                 }
             })
-            .navigationTitle("VistaCite")
     }
 }
 

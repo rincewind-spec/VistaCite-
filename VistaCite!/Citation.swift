@@ -110,14 +110,14 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
             dateFormatter.dateFormat = "dd MMM yyyy"
             for author in self.authors
             {
-                rtnString += author.firstName + author.lastName + ", "
+                rtnString += author.firstName + " " + author.lastName + ", "
             }
             rtnString = String(rtnString.dropLast(2)) + ". "
-            rtnString += "'\(self.title)' *\(self.journal)*, \(dateFormatter.string(from: self.publishDate)), \(self.publisher), [\(self.url.absoluteString)](\(self.url)). \(dateFormatter.string(from: self.accessDate))"
+            rtnString += "\"\(self.title)\". \(self.journal), \(dateFormatter.string(from: self.publishDate)), \(self.publisher), \(self.url.absoluteString). \(dateFormatter.string(from: self.accessDate))"
         }
         else if citationStyle == .apa7
         {
-            dateFormatter.dateFormat = "(yyyy, MM dd)"
+            dateFormatter.dateFormat = "yyyy, MMMM dd"
             if self.authors.count > 1
             {
                 rtnString = self.publisher
@@ -126,7 +126,7 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
             {
                 rtnString = self.authors[0].lastName + ", " + String(self.authors[0].firstName.first!)
             }
-            rtnString += ". " + dateFormatter.string(from: self.publishDate) + ". " + "*\(self.title)*" + ". " + self.journal + ". " + "[\(self.url.absoluteString)](\(self.url))"
+            rtnString += ". " + "\(dateFormatter.string(from: self.publishDate))" + ". " + "\(self.title)" + ". " + self.journal + ". " + "\(self.url.absoluteString)"
         }
         return rtnString
     }
