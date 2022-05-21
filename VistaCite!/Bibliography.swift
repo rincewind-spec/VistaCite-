@@ -35,6 +35,15 @@ public class Bibliography: Codable, ObservableObject
     {
         case citationStyle, citations, citationURL
     }
+    public func BibliographyFormatter() -> String
+    {
+        var rtnString = ""
+        for citation in citations
+        {
+            rtnString += "\(citations.firstIndex(of: citation)! + 1). " + citation.CitationFormatter(citationStyle: citationStyle) + "\n"
+        }
+        return rtnString
+    }
 }
 public enum CitationStyle: Codable
 {

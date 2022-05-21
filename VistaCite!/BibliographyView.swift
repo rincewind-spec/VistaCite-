@@ -34,7 +34,8 @@ struct BibliographyView: View {
                             })
                     TextField("Add Citation", text: $bibliography.citationURL)
                         .frame(width: 300.0)
-                        .onSubmit {
+                        .onSubmit
+                    {
                             bibliography.citations.append(Citation(url: URL(string: bibliography.citationURL)!))
                             bibliography.citationURL = ""
                         }
