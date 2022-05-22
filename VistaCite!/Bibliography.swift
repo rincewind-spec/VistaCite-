@@ -45,6 +45,10 @@ public class Bibliography: Codable, ObservableObject
         }
         return rtnString
     }
+    public func delete(atOffsets: IndexSet)
+    {
+        citations.remove(atOffsets: atOffsets)
+    }
 }
 public enum CitationStyle: Codable
 {

@@ -13,20 +13,20 @@ struct CitationView: View {
         Form
         {
             Text("Authors: ").font(.title2)
-            List(citation.authors)
+            List
             {
+                ForEach(citation.authors, id: \.id)
+                {
                 author in
                 AuthorView(author: author, authorNumber: citation.authors.firstIndex(of: author)!)
-                        Button(role: .destructive, action:
-                                {
-                                    citation.authors.remove(at: citation.authors.firstIndex(of: author)!)
-                                }, label:
-                                {
-                                        Text("Delete Author \(citation.authors.firstIndex(of: author)! + 1)")
-                        })
-                        .tint(.red)
+                }
+                .onDelete(perform: citation.delete)
             }
-            Button(action: {citation.authors.append(Author(authorName: ""))}, label: {Text("Add Author")})
+            Button(action:
+                    {withAnimation{
+                citation.authors.append(Author(authorName: ""))
+            }
+            }, label: {Text("Add Author")})
             Text("Dates: ").font(.title2)
             DatePicker("Date accessed:", selection: $citation.accessDate, displayedComponents: [.date])
                 .frame(width: 200.0)

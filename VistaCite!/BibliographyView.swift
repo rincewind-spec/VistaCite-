@@ -12,8 +12,10 @@ struct BibliographyView: View {
     var body: some View {
         NavigationView
             {
-                List(bibliography.citations, id: \.id)
+                List
                     {
+                        ForEach(bibliography.citations, id: \.id)
+                        {
                         citation in
                         NavigationLink(destination: CitationView(citation: citation), label:
                         {
@@ -21,6 +23,8 @@ struct BibliographyView: View {
                             //Text("\(bibliography.citations.firstIndex(of: citation)! + 1). \(citation.CitationFormatter(citationStyle: bibliography.citationStyle))")
                         }
                         )
+                        }
+                        .onDelete(perform: bibliography.delete)
                     }
             }
             .toolbar(content:
@@ -36,12 +40,15 @@ struct BibliographyView: View {
                             {
                         copyOut(bibliography.BibliographyFormatter())
                             })
+                    .keyboardShortcut("e")
                     TextField("Add Citation", text: $bibliography.citationURL)
                         .frame(width: 300.0)
                         .onSubmit
                     {
-                            bibliography.citations.append(Citation(url: URL(string: bibliography.citationURL)!))
+                        withAnimation{
+                        bibliography.citations.append(Citation(url: URL(string: bibliography.citationURL)!))
                             bibliography.citationURL = ""
+                        }
                         }
                 }
             })

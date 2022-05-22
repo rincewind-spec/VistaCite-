@@ -130,6 +130,10 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         }
         return rtnString
     }
+    public func delete(atOffsets: IndexSet)
+    {
+        authors.remove(atOffsets: atOffsets)
+    }
     enum CodingKeys: CodingKey
     {
         case authors, id, accessDate, publishDate, url, publisher, journal, title
