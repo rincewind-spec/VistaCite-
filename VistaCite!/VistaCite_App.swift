@@ -9,7 +9,12 @@ import SwiftUI
 
 @main
 struct VistaCite_App: App {
+    @AppStorage("citationStyleDefault") var citationStyleDefault: CitationStyle = .mla9
     var body: some Scene {
-        DocumentGroup(newDocument: VistaBibliography(bibliography: Bibliography(citationStyle: .mla9)), editor: {file in ContentView(document: file.$document)})
+        DocumentGroup(newDocument: VistaBibliography(bibliography: Bibliography(citationStyle: citationStyleDefault)), editor: {file in ContentView(document: file.$document)})
+        Settings
+        {
+            SettingsView()
+        }
     }
 }

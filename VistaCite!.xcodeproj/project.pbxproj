@@ -21,6 +21,7 @@
 		B74B555928307CB900203FD9 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = B74B555828307CB900203FD9 /* DomainParser */; };
 		B74B555B2831C8A900203FD9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B555A2831C8A900203FD9 /* AuthorView.swift */; };
 		B761F496283AD3D00010B1D1 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B761F495283AD3D00010B1D1 /* Exporter.swift */; };
+		B761F49A283AEEB20010B1D1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B761F499283AEEB20010B1D1 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		B74B5555282DD88200203FD9 /* CitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationView.swift; sourceTree = "<group>"; };
 		B74B555A2831C8A900203FD9 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
 		B761F495283AD3D00010B1D1 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		B761F499283AEEB20010B1D1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				B74B554B282C2E7200203FD9 /* Citation.swift */,
 				B74B5549282C2D6D00203FD9 /* Bibliography.swift */,
 				B74B5536282B390200203FD9 /* VistaCite_App.swift */,
+				B761F499283AEEB20010B1D1 /* SettingsView.swift */,
 				B74B5538282B390200203FD9 /* VistaBibliography.swift */,
 				B74B553A282B390200203FD9 /* ContentView.swift */,
 				B74B554F282C44AC00203FD9 /* CitationRow.swift */,
@@ -187,6 +190,7 @@
 				B74B554C282C2E7200203FD9 /* Citation.swift in Sources */,
 				B74B5539282B390200203FD9 /* VistaBibliography.swift in Sources */,
 				B74B553B282B390200203FD9 /* ContentView.swift in Sources */,
+				B761F49A283AEEB20010B1D1 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

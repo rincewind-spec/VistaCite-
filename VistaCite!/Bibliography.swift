@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 public class Bibliography: Codable, ObservableObject
 {
     
@@ -50,8 +51,8 @@ public class Bibliography: Codable, ObservableObject
         citations.remove(atOffsets: atOffsets)
     }
 }
-public enum CitationStyle: Codable
+public enum CitationStyle: Int, Codable
 {
-    case mla9
-    case apa7
+    case mla9 = 1
+    case apa7 = 2
 }
