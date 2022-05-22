@@ -32,6 +32,10 @@ struct BibliographyView: View {
                                 Text("MLA 9").tag(CitationStyle.mla9)
                                 Text("APA 7").tag(CitationStyle.apa7)
                             })
+                    Button("Export", action:
+                            {
+                        copyOut(bibliography.BibliographyFormatter())
+                            })
                     TextField("Add Citation", text: $bibliography.citationURL)
                         .frame(width: 300.0)
                         .onSubmit

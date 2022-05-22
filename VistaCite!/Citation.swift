@@ -108,9 +108,9 @@ public class Citation: Codable, ObservableObject, Identifiable, Hashable
         if citationStyle == .mla9
         {
             dateFormatter.dateFormat = "dd MMM yyyy"
-            for author in self.authors
+            for i in 0..<authors.count
             {
-                rtnString += author.firstName + " " + author.lastName + ", "
+                rtnString += authors[i].firstName + " " + authors[i].lastName + ", "
             }
             rtnString = String(rtnString.dropLast(2)) + ". "
             rtnString += "\"\(self.title)\". \(self.journal), \(dateFormatter.string(from: self.publishDate)), \(self.publisher), \(self.url.absoluteString). \(dateFormatter.string(from: self.accessDate))"

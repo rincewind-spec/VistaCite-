@@ -13,7 +13,8 @@ public class Bibliography: Codable, ObservableObject
     {
         let filer = try decoder.container(keyedBy: CodingKeys.self)
         citationStyle = try filer.decode(CitationStyle.self, forKey: .citationStyle)
-        citationURL = try filer.decode(String.self, forKey: .citationURL); citations = try filer.decode([Citation].self, forKey: .citations)
+        citationURL = try filer.decode(String.self, forKey: .citationURL)
+        citations = try filer.decode([Citation].self, forKey: .citations)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -38,9 +39,9 @@ public class Bibliography: Codable, ObservableObject
     public func BibliographyFormatter() -> String
     {
         var rtnString = ""
-        for citation in citations
+        for i in 0..<citations.count
         {
-            rtnString += "\(citations.firstIndex(of: citation)! + 1). " + citation.CitationFormatter(citationStyle: citationStyle) + "\n"
+            rtnString += "\(i + 1). " + citations[i].CitationFormatter(citationStyle: citationStyle) + "\n"
         }
         return rtnString
     }
