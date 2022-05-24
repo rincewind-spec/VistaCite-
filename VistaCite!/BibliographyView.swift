@@ -26,7 +26,6 @@ struct BibliographyView: View {
                         }
                         .onDelete(perform: bibliography.delete)
                     }
-                Text("No selection").font(.headline)
             }
             .toolbar(content:
                         {
